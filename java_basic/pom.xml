@@ -9,23 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>scala_basic</artifactId>
+    <artifactId>java_basic</artifactId>
 
     <packaging>pom</packaging>
     <modules>
-        <module>scala_algorithm</module>
-        <module>scala_study</module>
+        <module>java_thread</module>
     </modules>
-
-    <dependencies>
-
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>${scala.version}</version>
-        </dependency>
-
-    </dependencies>
-
-
 </project>
