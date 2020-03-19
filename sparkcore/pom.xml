@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>wordcount</module>
+        <module>pv_uv</module>
     </modules>
 
 </project>
