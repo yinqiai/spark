@@ -14,6 +14,7 @@
     <modules>
         <module>wordcount</module>
         <module>pv_uv</module>
+        <module>practice</module>
     </modules>
 
 </project>
