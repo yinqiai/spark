@@ -1,5 +1,6 @@
 package com.transsnet
 
+import org.apache.spark.sql.catalyst.expressions.Pi
 import org.apache.spark.{SparkConf, SparkContext}
 
 object ScalaMapCase {
@@ -18,7 +19,14 @@ object ScalaMapCase {
     val rdd = sparkContext.textFile("C:\\Users\\chenlimin\\Desktop\\big-data\\spark\\sparkcore\\wordcount\\src\\main\\java\\com\\transsnet\\people.txt")
     rdd.map(line=>line.split(","))
       .map(line=>if(line.length == 1) (line(0)) else if(line.length == 2) (line(0),line(1)) else (line(0),line(1),line(2)))
+      //这行模式匹配其实会报错的，只是idea没有报出来而已
       .map{ case (one) => ("one:"+one) case (name,age) =>("name:"+name,"age:"+age) case _ => ("_name","_age","_")}
-      //.foreach(println)
+      .foreach(println)
+
   }
+
+
+
+
+
 }
