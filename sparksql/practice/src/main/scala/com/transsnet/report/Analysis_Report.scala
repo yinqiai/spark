@@ -6,8 +6,8 @@ import org.apache.spark.sql.{DataFrame, SparkSession}
 case class tbStock(ordernumber:String,locationid:String,dateid:String) extends Serializable
 
 case class tbStockDetail(ordernumber:String, rownum:Int, itemid:String, number:Int, price:Double, amount:Double) extends Serializable
-
 case class tbDate(dateid:String, years:Int, theyear:Int, month:Int, day:Int, weekday:Int, week:Int, quarter:Int, period:Int, halfmonth:Int) extends Serializable
+
 
 object Analysis_Report {
 
