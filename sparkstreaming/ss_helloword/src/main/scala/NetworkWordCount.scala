@@ -20,7 +20,7 @@ object NetworkWordCount {
 
     val lines = ssc.socketTextStream("hadoop001", 9999)
 
-    val result = lines.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_)
+    val result = lines.flatMap(_.split(" ")).map((_,1)).reduceByKey((a,b)=>(a+b))
 
     result.print()
 
