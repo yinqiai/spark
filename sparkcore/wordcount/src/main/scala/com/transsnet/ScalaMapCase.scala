@@ -1,6 +1,5 @@
 package com.transsnet
 
-import org.apache.spark.sql.catalyst.expressions.Pi
 import org.apache.spark.{SparkConf, SparkContext}
 
 object ScalaMapCase {

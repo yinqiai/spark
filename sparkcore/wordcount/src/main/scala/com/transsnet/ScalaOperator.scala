@@ -1,6 +1,6 @@
 package com.transsnet
 
-import org.apache.spark.{HashPartitioner, SparkConf, SparkContext}
+import org.apache.spark.{SparkConf, SparkContext}
 //scala 算子练习
 object ScalaOperator {
   def main(args: Array[String]): Unit = {

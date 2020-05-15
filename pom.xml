@@ -13,7 +13,7 @@
         <module>sparkstreaming</module>
         <module>scala_basic</module>
         <module>java_basic</module>
-        <module>spark-palmforce</module>
+        <!--<module>spark-palmforce</module>-->
     </modules>
     <!-- 第一步，干掉src目录，然后加入这个packaging标签
          第二步，选中项目new module 和创建一个新项目一样，记得不要选任何骨架
