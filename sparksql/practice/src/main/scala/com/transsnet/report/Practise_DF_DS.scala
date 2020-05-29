@@ -11,7 +11,7 @@ import org.apache.spark.sql.types._
   */
 object Practise_DF_DS {
   //1.Inferring the Schema Using Reflection
-  def main(args: Array[String]): Unit = {
+ def main(args: Array[String]): Unit = {
     val sparkConf = new SparkConf().setAppName("Practise").setMaster("local[*]")
     //sparkContext
     val sc = new SparkContext(sparkConf)
@@ -42,14 +42,15 @@ object Practise_DF_DS {
     //peopleDF.map(teenager => "Name: " + {println(teenager.toString()+" ++ " +teenager.schema);teenager.getAs[String]("name")}).show()
 
     // The columns of a row in the result can be accessed by field index
-   // peopleDF.map(teenager => {println(teenager) ;"Name: " + teenager(0)}).show()
+    val valueDF = peopleDF.map(teenager => {"Name: " + teenager(0)})
+   valueDF.show()
    implicit val mapEncoder = org.apache.spark.sql.Encoders.kryo[Map[String, Any]]
     teenagersDF.map(teenager => teenager.getValuesMap[Any](List("name", "age"))).collect()
 
   }
 
- /* //2.Programmatically Specifying the Schema
-  def main(args: Array[String]): Unit = {
+  //2.Programmatically Specifying the Schema
+  /*def main(args: Array[String]): Unit = {
     val sparkConf = new SparkConf().setAppName("Practise_DF_DS").setMaster("local[*]")
     //sparkContext
     val sc = new SparkContext(sparkConf)
