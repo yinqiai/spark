@@ -18,6 +18,8 @@ object NetworkWordCount {
       */
     val ssc = new StreamingContext(sparkConf, Seconds(5))
 
+    ssc.textFileStream()
+
     val lines = ssc.socketTextStream("hadoop001", 9999)
 
     val result = lines.flatMap(_.split(" ")).map((_,1)).reduceByKey((a,b)=>(a+b))

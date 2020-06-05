@@ -2,6 +2,7 @@ package com.transsnet.wordcount
 
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 /**
   * @author yinqi
@@ -36,6 +37,8 @@ object StructedStreaming {
       .outputMode("complete")
       .format("console")
       .start()
+
+   val ssc= new StreamingContext(sc,Seconds(1))
 
     query.awaitTermination()
   }
