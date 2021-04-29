@@ -18,7 +18,7 @@ object NetworkWordCount {
       */
     val ssc = new StreamingContext(sparkConf, Seconds(5))
 
-    ssc.textFileStream()
+    //ssc.textFileStream()
 
     val lines = ssc.socketTextStream("hadoop001", 9999)
 
