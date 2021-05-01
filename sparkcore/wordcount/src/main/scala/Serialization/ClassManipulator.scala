@@ -20,9 +20,11 @@ object ClassManipulator {
     val outputFile = className.split('.').last + ".class"
 
     println(outputFile)
-    val fileStream = new FileOutputStream(outputFile)
+    //生成文件的目录和路径
+    val fileStream = new FileOutputStream("testyinqi/A.class")
     var data = stream.read()
     while (data != -1) {
+      println(data)
       fileStream.write(data)
       data = stream.read()
     }
@@ -39,7 +41,9 @@ object ClassManipulator {
 
 class FileClassLoader() extends ClassLoader {
   override def findClass(fullClassName: String): Class[_] = {
+
     val file = fullClassName.split('.').last + ".class"
+    println(file)
     val in = new FileInputStream(file)
     val bos = new ByteArrayOutputStream
     val bytes = new Array[Byte](4096)

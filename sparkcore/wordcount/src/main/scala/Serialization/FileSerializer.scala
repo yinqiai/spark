@@ -1,6 +1,6 @@
 package Serialization
 
-import java.io.{FileInputStream, FileOutputStream, ObjectInputStream, ObjectOutputStream}
+import java.io._
 
 /**
   * @author yinqi
@@ -11,10 +11,12 @@ object FileSerializer {
     val task = new SimpleTask()
     FileSerializer.writeObjectToFile(task, "task.ser")
 
-    ClassManipulator.saveClassFile(task)
+   val classsLoad = new FileClassLoader()
 
-/*    val task1 = FileSerializer.readObjectFromFile("task.ser").asInstanceOf[Task]
-    task1.run()*/
+    //ClassManipulator.saveClassFile(task)
+
+    val task1 = FileSerializer.readObjectFromFile("task.ser",classsLoad).asInstanceOf[Task]
+    task1.run()
   }
 
   def writeObjectToFile(obj: Object, file: String) = {
@@ -27,6 +29,16 @@ object FileSerializer {
   def readObjectFromFile(file: String): Object = {
     val fileStream = new FileInputStream(file)
     val ois = new ObjectInputStream(fileStream)
+    val obj = ois.readObject()
+    ois.close()
+    obj
+  }
+
+  def readObjectFromFile(file: String,classLoader: ClassLoader): Object = {
+    val fileStream = new FileInputStream(file)
+    val ois = new ObjectInputStream(fileStream){
+      override def resolveClass(desc:ObjectStreamClass):Class[_]=Class.forName(desc.getName,false,classLoader)
+    }
     val obj = ois.readObject()
     ois.close()
     obj
