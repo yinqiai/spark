@@ -8,30 +8,29 @@ import java.io._
   */
 object FileSerializer {
   def main(args: Array[String]): Unit = {
-   /* val task = new SimpleTask()
-    FileSerializer.writeObjectToFile(task, "task.ser")
+    /*val task = new SimpleTask()
+    FileSerializer.writeObjectToFile(task, "task.ser")*/
 
-    */
 
     //ClassManipulator.saveClassFile(task)
    /* val task = new SimpleTask()
     ClassManipulator.saveClassFile(task)*/
 
-    /*特别重要，方式1和方式二的实验结果可以验证 ：
+    /*特别重要，方式1和方式2的实验结果可以验证 ：
     通过ObjectOutputStream序列化对象，仅包含类的描述（而非定义），对象的状态数据，由于缺少类的定义，
     也就是缺少SimpleTask的字节码，反序列化过程中就会出现ClassNotFound的异常。*/
     /*方式1（从task.ser）反序列化 ，
-    反序列化方法底层 会调用ObjectInputStream.resolveClass默认回去target/classes目录下取得
+    反序列化方法底层 会调用ObjectInputStream.resolveClass默认回去target/classes目录下取得字节码文件进行反序列化
 
     */
-    val task1 = FileSerializer.readObjectFromFile("task.ser").asInstanceOf[Task]
-    task1.run()
+   /* val task1 = FileSerializer.readObjectFromFile("task.ser").asInstanceOf[Task]
+    task1.run()*/
 
-    /*方式2（从task.ser）反序列化 ，这里面没有重新classLoad
-    *
+    /*方式2（从task.ser）反序列化 ，实现一个自定义的FileClassLoader按照我们保存class文件来反序列化
+    *这里需要重载一下readObjectFromFile来调用我们自定义的classloader,里面是通过重写ObjectInputStream.resolveClass实现
     *
      */
-   /* val task = new SimpleTask()
+    /*val task = new SimpleTask()
      ClassManipulator.saveClassFile(task)*/
     val classsLoad = new FileClassLoader()
     val task2 = FileSerializer.readObjectFromFile("task.ser",classsLoad).asInstanceOf[Task]

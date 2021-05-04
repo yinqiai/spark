@@ -24,7 +24,7 @@ object ClassManipulator {
     val fileStream = new FileOutputStream("testyinqi/SimpleTask.class")
     var data = stream.read()
     while (data != -1) {
-      println(data)
+      //println(data)
       fileStream.write(data)
       data = stream.read()
     }
@@ -43,7 +43,8 @@ class FileClassLoader() extends ClassLoader {
   override def findClass(fullClassName: String): Class[_] = {
 
     //val file = fullClassName.split('.').last + ".class"
-    val filePath ="C:\\Users\\chenlimin\\Desktop\\big-data\\spark\\testyinqi\\SimpleTask.class"
+    //val filePath ="C:\\Users\\chenlimin\\Desktop\\big-data\\spark\\testyinqi\\SimpleTask.class"
+    val filePath ="/Users/yinqi/Desktop/chris/spark/testyinqi/SimpleTask.class"
     println(filePath)
     val in = new FileInputStream(filePath)
     val bos = new ByteArrayOutputStream
