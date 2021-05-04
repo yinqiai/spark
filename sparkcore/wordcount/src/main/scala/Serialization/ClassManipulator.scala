@@ -21,7 +21,7 @@ object ClassManipulator {
 
     println(outputFile)
     //生成文件的目录和路径
-    val fileStream = new FileOutputStream("testyinqi/A.class")
+    val fileStream = new FileOutputStream("testyinqi/SimpleTask.class")
     var data = stream.read()
     while (data != -1) {
       println(data)
@@ -34,7 +34,7 @@ object ClassManipulator {
 
   def main(args: Array[String]): Unit = {
 
-    saveClassFile(new SimpleTask())
+    //saveClassFile(new SimpleTask())
   }
 }
 
@@ -42,9 +42,10 @@ object ClassManipulator {
 class FileClassLoader() extends ClassLoader {
   override def findClass(fullClassName: String): Class[_] = {
 
-    val file = fullClassName.split('.').last + ".class"
-    println(file)
-    val in = new FileInputStream(file)
+    //val file = fullClassName.split('.').last + ".class"
+    val filePath ="C:\\Users\\chenlimin\\Desktop\\big-data\\spark\\testyinqi\\SimpleTask.class"
+    println(filePath)
+    val in = new FileInputStream(filePath)
     val bos = new ByteArrayOutputStream
     val bytes = new Array[Byte](4096)
     var done = false
