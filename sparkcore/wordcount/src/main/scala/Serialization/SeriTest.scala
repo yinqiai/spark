@@ -25,8 +25,10 @@ object SeriTest {
     /*val match1: RDD[String] = search.getMatch1(rdd)
     match1.collect().foreach(println)*/
 
-    search.getMatche2(rdd)
-    search.isMatch3()
+   /* search.getMatche2(rdd)
+    search.isMatch3()*/
+
+    search.getMatch4(rdd)
   }
 }
 //解决系列化问题方式一extends Serializable
@@ -52,6 +54,7 @@ class Search(s:String) {
   def getMatch4 (rdd: RDD[String]): Unit = {
 
    // rdd.filter(a=>false)
+   // rdd.filter( a=>a.contains("dsd"))
     rdd.filter(isMatch)
   }
   //过滤出包含字符串的RDD
